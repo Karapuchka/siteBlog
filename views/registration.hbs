@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Регистарция</title>
+</head>
+<body>
+    <div class="wrapper theme-gradient">
+
+        <main class="main">
+
+            <div class="container height-100 childrean-center ">
+
+                <div class="login login--registr childrean-center">
+
+                    <h2 class="error-info">{{errorMessange}}</h2>
+
+                    <h1 class="login__title">Регистрация</h1>
+                    
+                    {{!-- Форма регистрация --}}
+                    <form class="login__form" action="/registration" method="post">
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Логин:</label>
+                            <input class="login__form__input" id="login" type="text" name="login" placeholder="Придумайте логин">
+                            <label class="login__form__error" id="login-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Пароль:</label>
+                            <div class="login__form__item__group">
+                                <input class="login__form__input" id="password" name="password" type="password" placeholder="Придумайте пароль">
+                                <span class="login__form__open-password" id="btn-open-password"><img class="login__form__open-password__img" src="/images/eye-open.png" alt="Показать пароль"></span>
+                            </div>
+                            <label class="login__form__error" id="password-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Имя:</label>
+                            <input class="login__form__input" id="first-name" name="firstName" placeholder="Укажите ваше имя">
+                            <label class="login__form__error" id="firstName-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Фамилия:</label>
+                            <input class="login__form__input" id="last-name" name="lastName" placeholder="Укажите вашу фамилию">
+                            <label class="login__form__error" id="lastName-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <button class="btn btn-registr" id="btn-registr" type="submit">Зарегистрироваться</button>
+                            <a class="login__form__link" href="/">Войти</a>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+<script src="/js/registr.js"></script>
+</body>
+</html>

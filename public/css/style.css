@@ -32,6 +32,30 @@
     color: red;
 }
 
+.btn{
+    font-size: 18px;
+
+    padding: 7px 10px;
+
+    border-radius: 15px;
+    border: 1px solid #b1b0b0;
+
+    transition: all .7s ease;
+
+    width: 120px;
+
+    margin-bottom: 15px;
+}
+
+.btn:hover{
+    background: #23c0d5;
+    transition: all .7s ease;
+}
+
+.btn-registr{
+    width: 250px;
+}
+
 .main{
     flex: 1 1 auto;
 
