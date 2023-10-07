@@ -1,0 +1,58 @@
+@import './nullstyles.css';
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100%;
+    width: 100%;
+}
+
+.childrean-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    height: 100%;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.height-100{
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.error-info{
+    color: red;
+}
+
+.main{
+    flex: 1 1 auto;
+
+    width: 100%;
+    height: 100%;
+}
+  
+.theme-gradient{
+    background: linear-gradient(-45deg, #527cee, #3f3ce7, #23a6d5, #23c0d5);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+  
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

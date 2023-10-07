@@ -1,0 +1,20 @@
+{
+    "name": "testnode",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "node app.js",
+        "ser": "node app.js start server",
+        "start nm": "nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "express-handlebars": "^7.1.2",
+        "hbs": "^4.2.0",
+        "mobile-detect": "^1.4.5",
+        "mysql2": "^3.5.2"
+    },
+    "devDependencies": {
+        "jasmine-node": "^3.0.0"
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Авторизация</title>
+</head>
+<body>
+    <div class="wrapper theme-gradient">
+
+        <main class="main">
+
+            <div class="container height-100 childrean-center ">
+
+                <div class="login childrean-center">
+
+                    <h2 class="error-info">{{errorMessange}}</h2>
+
+                    <h1 class="login__title">Авторизация</h1>
+                    
+                    {{!-- Форма авторизации --}}
+                    <form class="login__form" action="/home" method="post">
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Логин:</label>
+                            <input class="login__form__input" id="login" type="text" name="login" placeholder="Введите ваш логин">
+                            <label class="login__form__error" id="login-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <label class="login__form__description">Пароль:</label>
+                            <input class="login__form__input" id="password" name="password" placeholder="Введите ваш логин">
+                            <label class="login__form__error" id="password-error-messange">Error</label>
+                        </div>
+
+                        <div class="login__form__item">
+                            <button class="login__form__btn" id="btn-login" type="submit">Вход</button>
+                            <a class="login__form__link" href="/registration">Зарегистрироваться</a>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>
