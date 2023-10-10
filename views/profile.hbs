@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <title>Профиль</title>
+</head>
+<body>
+    <div class="wrapper">
+         <section class="header">
+
+            <header class="header-container header-container--bg-color">
+
+                <div class="header-content container">
+
+                    <div class="header__logo">Ваш блог</div>
+    
+                    <nav class="menu">
+    
+                        <ul class="menu__list">
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/home">Главная</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/post">Написать пост</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link menu__list__item__link--active" href="#">Профиль</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                        </ul>
+    
+                    </nav>
+
+                </div>
+
+            </header>
+
+            <main class="post-container container">
+
+                <form class="post" action="/updateuser" method="post">
+                    <h3 class="post__title post__label post__title--text-center">Информация о пользователе</h3>
+                    <div class="post__user">
+                        <div class="post__header__item post__item--column">
+                            <label class="post__label post__label--little" for="update-lastname">Имя</label>
+                            <input value={{lastName}} id="update-lastname" name="updateLastName" type="text" class="post__user__info">
+                        </div>
+                        <div class="post__header__item post__item--column">
+                            <label class="post__label post__label--little" for="update-firstName">Фамилия</label>
+                            <input value={{firstName}} id="update-firstName" name="updateFirstName" type="text" class="post__user__info">
+                        </div>
+                         <div class="post__header__item post__item--column">
+                            <label class="post__label post__label--little" for="update-firstName">Логин</label>
+                            <input value={{login}} id="update-login" name="updateLogin"  type="text" class="post__user__info">
+                        </div>
+                         <div class="post__header__item post__item--column">
+                            <label class="post__label post__label--little" for="update-firstName">Пароль</label>
+                            <input value={{password}} id="update-password" name="updatePassword"  type="text" class="post__user__info">
+                        </div>        
+                    </div>
+                    <button type="submit" class="btn btn-post">Изменить</button>
+                </form>
+
+                <div class="post post--margin-left post--item-start">
+                    <h3 class="post__title post__label post__title--text-center">Информация постах</h3>
+                    <ul class="update__list">
+                        {{#each post}}
+                        <li class="update__list__item">
+                            <h2 class="post__title update__list__item__title">Заголовок: {{this.title}}</h2>
+                            <div class="padding-10 user-management">
+                                <h3>Теги: {{this.tag}}</h3>
+                                <div class="flex-item">
+                                    <form action="/delpost/{{this.id}}" method="post"><button type="submit" id="del-post" class="btn btn--red">Удалить</button></form>
+                                    <form action="/updatepost/{{this.id}}" method="post"><button type="submit" class="btn">Изменить</button></form>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </main>
+
+        </section>
+    </div>
+
+    <script src="/js/profile.js"></script>
+</body>
+</html>

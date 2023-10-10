@@ -3,9 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/post.css">
     <title>Home</title>
 </head>
 <body>
-    <h1>Home</h1>
+    <div class="wrapper">
+
+        <section class="header header--not-bg">
+
+            <header class="header-container header-container--bg-color">
+
+                <div class="header-content container">
+
+                    <div class="header__logo">Ваш блог</div>
+    
+                    <nav class="menu">
+    
+                        <ul class="menu__list">
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link menu__list__item__link--active" href="#">Главная</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/post">Написать пост</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/profile">Профиль</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                        </ul>
+    
+                    </nav>
+
+                </div>
+
+                
+            </header>
+
+            <main class="post-container container">
+                <div class="post">
+
+                    <div class="post__header post__tags" id="post__tags__tags">
+                        <h3 class="post__tags__title">Теги: </h3>
+                        <ul class="post__tags__list" id="post-tags-list">
+                           <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-motivation">Мотивация</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-travel">Путешествие</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-finance">Финансы</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-it">IT</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-policy">Политика</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-Repair">Ремонт</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-Hobby">Хобби</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-about">О всяком</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-subscribes">Мои подписки</h3>
+                            </li>
+                            <li class="post__tags__list__item">
+                                <h3 class="post__tags__title btn post-btn post-btn-tags" id="post-tag-reset">Сбросить</h3>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </main>
+        </section>
+
+        <div class="post__main">
+            <ul class="post__main__list container" id="list-post">
+                {{#each info}}
+                    <li class="post__main__list__item" id="post-{{this.id}}" >
+                        
+                        <div class="post__main__group">
+                            <h3 class="post__main__title">{{this.title}}</h3>
+                            <h4 class="post__main__author">Автор: {{this.lastName}} {{this.firstName}} <form action="/subscribe" method="post"><button class="btn-subscribe" type="submit">Подписаться</button></form></h4>
+                            <h5 class="post__main__tag">Теги:<span class="tags-post">{{this.tag}}</span></h5>
+                        </div>
+
+                        <p class="post__main__text">{{this.text}}</p>
+
+                        <div class="post__main__comments">
+
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <script src="/js/home.js"></script>
 </body>
 </html>

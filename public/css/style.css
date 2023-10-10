@@ -9,6 +9,8 @@
 
     height: 100%;
     width: 100%;
+
+    font-family: 'Montserrat';
 }
 
 .childrean-center{
@@ -21,6 +23,14 @@
     height: 100%;
     width: 1200px;
     margin: 0 auto;
+}
+
+.post-container{
+    height: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .height-100{
@@ -56,11 +66,160 @@
     width: 250px;
 }
 
-.main{
-    flex: 1 1 auto;
+.btn--red:hover{
+    background: #d53823;
+    transition: all .7s ease;
+    color: #fff;
+}
+
+.btn-subscribe{
+    background: transparent;
+
+    border: none;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    transition: all .7s ease;
+
+    padding: 5px;
+}
+
+.btn-subscribe:hover{
+    background: #23c0d5;
+    transition: all .7s ease;
+}
+
+.header{
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+
+    background: url('/images/bg-header.jpg') no-repeat center center/cover;
+}
+
+.header--not-bg{
+    background: none;
+    height: 250px;
+}
+
+.header__logo{
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: 700;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    color: #fff;    
+}
+
+.header-container{
+    padding: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-container--bg-color{
+    background-color:  #6983DC;
+    backdrop-filter: blur(25px);
+}
+
+.header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu{
+    width: 40%;
+}
+
+.menu__list{
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     width: 100%;
-    height: 100%;
+}
+
+.menu__list__item{
+    position: relative;
+}
+
+.menu__list__item__line{
+    position: absolute;
+    top: 20px;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #000;
+
+    
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform .7s ease;
+}
+
+.menu__list__item:hover{
+
+    .menu__list__item__line{
+     
+        transform: scaleX(1);
+        transform-origin: left;
+    
+        transition: transform .7s ease;
+    }
+
+    .menu__list__item__link{
+        color: #8aace0;
+        
+    }
+}
+
+.menu__list__item__link{
+    font-size: 18px;
+    font-family: 'Montserrat';
+
+    color: #fff;
+
+    text-transform: uppercase;
+
+}
+
+.menu__list__item__link--active{
+    color: #000;
+}
+
+.main{
+
+    width: 100%;
+}
+
+.footer{
+    width: 100%;
+}
+
+.padding-10{
+    padding: 0 10px;
+}
+
+.flex-item{
+    display: flex;
+    justify-content: space-evenly;
+    
+    width: 100%;
+}
+
+.display-none{
+    display: none;
 }
   
 .theme-gradient{
