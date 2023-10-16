@@ -14,6 +14,8 @@ let userInfo ={
     password: '',
 }
 
+let idUpdatePost = 0;
+
 let usersList = [];
 
 let listPost = [];
@@ -155,7 +157,7 @@ app.get('/post', (req, res)=>{
 app.post('/setpost', urlcodedParser, (req, res)=>{
     if(!req.body) return res.statusCode(400);
 
-    pool.query('INSERT INTO post (idUser, title, text) VALUES(?,?,?)', [userInfo.id, req.body.postTitle, req.body.postText], (err, data)=>{
+    pool.query('INSERT INTO post (idUser, title, text, tag) VALUES(?,?,?,?)', [userInfo.id, req.body.postTitle, req.body.postText, req.body.postTag], (err, data)=>{
         if(err) return console.log(err);
         res.redirect('/home');     
     });
@@ -193,16 +195,23 @@ app.post('/updatepost/:id', urlcodedParser, (req, res)=>{
     pool.query('SELECT * FROM post WHERE id=?', [req.params.id], (err, data)=>{
         if(err) return console.log(err);
 
-        res.render('upPost.hbs', {
-            post: data
-        })
+        idUpdatePost = req.params.id;
 
-        console.log(data);
+        res.render('upPost.hbs', {
+            title: data[0].title,
+            text: data[0].text,
+        })
     })
 });
 
-app.get('/upPost', (req, res)=>{
-    res.render('upPost.hbs');
+app.post('/uppost', urlcodedParser, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+
+    pool.query('UPDATE post SET text=?, title=?, tag=? WHERE id=?', [req.body.postText, req.body.postTitle, req.body.postTag, idUpdatePost],(err, data)=>{
+        if(err) return console.log(err);
+
+        res.redirect('/profile');
+    })
 });
 
 app.listen(3000, ()=>{

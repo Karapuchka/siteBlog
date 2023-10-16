@@ -14,10 +14,12 @@
     padding: 20px 0;
 }
 
+.post--overflow-scroll{
+    overflow: auto ;
+}
+
 .post__header{
     width: 80%;
-
-    margin-bottom: 20px;
 }
 
 .post__header__item{
@@ -30,6 +32,15 @@
 
 .post__item--column{
     flex-direction: column;
+}
+
+.post__item--row-center{
+    justify-content: center;
+    align-items: center;
+}
+
+.post__item--margin-bottom{
+    margin-bottom: 10px;
 }
 
 .post__error{
@@ -54,6 +65,25 @@
     text-shadow: 2px 2px black, -2px 2px black, 2px -2px black, -2px -2px black;
 
     margin-bottom: 20px;
+}
+
+.post__label--margin-none{
+    margin-bottom: 0;
+}
+
+.post__select{
+    margin-left: 10px;
+
+    border-radius: 20px;
+
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+
 }
 
 .post__title{
@@ -86,7 +116,13 @@
 .post__btn{
     margin-bottom: 0;
     cursor: pointer;
+}
 
+.post__btn__link{
+    width: 100%;
+    height: 100%;
+
+    display: block;
 }
 
 .post__main{

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/post.css">
     <title>Профиль</title>
 </head>
 <body>
     <div class="wrapper">
-         <header class="header">
+         <section class="header">
 
-            <div class="header-container header-container--bg-color">
+            <header class="header-container header-container--bg-color">
 
                 <div class="header-content container">
 
@@ -41,31 +42,44 @@
 
                 </div>
 
-            </div>
+            </header>
 
-        </header>
-
-        {{data}}
-
-         {{!-- <main class="post-container container">
-                <form class="post" action="/setpost" method="post">
+            <main class="post-container container">
+                <form class="post" action="/uppost" method="post">
                     <div class="post__header">
-                        <div class="post__header__item">
-                            <button class="btn btn-registr post__btn" id="post-btn-submit" type="submit">Опубликовать</button>
+                        <div class="post__header__item post__item--margin-bottom">
+                            <button class="btn btn-registr post__btn" id="post-btn-submit" type="submit">Изменить</button>
+                            <button class="btn btn-registr post__btn" id="post-btn-submit" type="button"><a class="post__btn__link" href="/profile">Выйти</a></button>
                             <span class="post__error" id="post-error">Error</span>
                             <button class="btn btn--red post__btn" id="post-btn-delete" type="reset">Очистить</button>
                         </div>
-                        <div class="post__header__item post__item--column">
+                        <div class="post__header__item post__item--column post__item--margin-bottom">
                             <label class="post__label" for="post-title">Название поста</label>
-                            <input class="post__title" type="text" name="postTitle" id="post-title" placeholder="Введите название поста">
+                            <input class="post__title" type="text" name="postTitle" id="post-title" value="{{title}}" placeholder="Введите название поста">
+                        </div>
+                        <div class="post__header__item post__item--row-center post__item--margin-bottom">
+                            <label class="post__label post__label--margin-none" for="post-tag">Выберите тег</label>
+                            <select class="post__select" name="postTag" id="post-tag">
+                                <option value="Мотивация">Мотивация</option>
+                                <option value="Путешествие">Путешествие</option>
+                                <option value="Финансы">Финансы</option>
+                                <option value="IT">IT</option>
+                                <option value="Политика">Политика</option>
+                                <option value="Ремонт">Ремонт</option>
+                                <option value="Хобби">Хобби</option>
+                                <option value="О всяком">О всяком</option>
+                            </select>
                         </div>
                     </div>
                     <div class="post__main post__item--column">
                         <label class="post__label" for="post-text">Содержание</label>
-                        <textarea  class="post__text" type="text" name="postText" id="post-text" placeholder="Введите содержание поста"></textarea>
+                        <textarea  class="post__text" type="text" name="postText" id="post-text" placeholder="Введите содержание поста">{{text}}</textarea>
                     </div>
                 </form>
-            </main> --}}
+            </main>
+
+        </section>
     </div>
+    <script src="/js/post.js"></script>
 </body>
 </html>
