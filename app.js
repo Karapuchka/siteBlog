@@ -283,6 +283,16 @@ app.post('/addcomment', urlcodedParser, (req, res)=>{
     })
 });
 
+app.post('/subscribe', urlcodedParser, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+
+    pool.query('INSERT INTO users (subscriptions) VALUES (?)', [`${userInfo.lastName} ${userInfo.firstName}`], (err, data)=>{
+        if(err) return console.log(err);
+
+        res.redirect('/home')
+    })
+});
+
 app.listen(3000, ()=>{
     console.log('Server active! URL: http://localhost:3000/');
 });
