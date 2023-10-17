@@ -92,7 +92,7 @@ app.post('/home', urlcodedParser, (req, res)=>{
     
             listPost = data;
     
-            let infoAll = unionData(usersList, listPost);
+            let infoAll = unionDataUser(usersList, listPost);
             res.render('home.hbs', {
                 info: infoAll,
             });
@@ -100,7 +100,7 @@ app.post('/home', urlcodedParser, (req, res)=>{
     });
 });
 
-app.get('/home', (req, res)=>{
+app.get('/home', (_, res)=>{
 
     pool.query('SELECT * FROM users', (err, data)=>{
         if(err) return console.log(err);
@@ -112,7 +112,7 @@ app.get('/home', (req, res)=>{
         if(err) return console.log(err);
 
         listPost = data;
-        let infoAll = unionData(usersList, listPost);
+        let infoAll = unionDataUser(usersList, listPost);
         res.render('home.hbs', {
             info: infoAll,
         });
@@ -207,10 +207,79 @@ app.post('/updatepost/:id', urlcodedParser, (req, res)=>{
 app.post('/uppost', urlcodedParser, (req, res)=>{
     if(!req.body) return res.statusCode(400);
 
-    pool.query('UPDATE post SET text=?, title=?, tag=? WHERE id=?', [req.body.postText, req.body.postTitle, req.body.postTag, idUpdatePost],(err, data)=>{
+    pool.query('UPDATE post SET text=?, title=?, tag=? WHERE id=?', 
+                [req.body.postText, req.body.postTitle, req.body.postTag, idUpdatePost], 
+                (err, data)=>{
+                    if(err) return console.log(err);
+
+                    res.redirect('/profile');
+                }
+    )
+});
+
+app.post('/updateuser', urlcodedParser, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+
+    let userPost = [];
+
+    pool.query('UPDATE users SET firstName=?, lastName=?, login=?, password=? WHERE id=?', 
+                [req.body.updateFirstName, req.body.updateLastName, req.body.updateLogin, req.body.updatePassword, userInfo.id], 
+                (err, data)=>{
+                    if(err) return console.log(err);
+                }
+    );
+
+    pool.query('SELECT * FROM post', (err, data)=>{
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].idUser == userInfo.id) userPost.push(data[i]);
+        }
+
+        res.render('profile', {
+            lastName: req.body.updateLastName,
+            firstName: req.body.updateFirstName,
+            login: req.body.updateLogin,
+            password:req.body.updatePassword,
+            post: userPost,
+        });
+    });
+});
+
+app.post('/viewPost/:id', urlcodedParser, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+
+    let post, user;
+
+    pool.query('SELECT * FROM post WHERE id=?', [req.params.id], (err, data)=>{
+        if(err) return console.log(err);
+        post = Object.assign(data);
+
+        pool.query('SELECT * FROM users WHERE id=?', [post[0].idUser], (err, data)=>{
+            if(err) return console.log(err);
+            user = Object.assign(data);
+
+            pool.query('SELECT * FROM comments WHERE idPost=?', [req.params.id], (err, data)=>{
+                if(err) return console.log(err);
+                res.render('viewPost.hbs', {
+                    idPost: post[0].id,
+                    title: post[0].title,
+                    text: post[0].text,
+                    firstName: user[0].firstName,
+                    lastName: user[0].lastName,
+                    tag: post[0].tag,
+                    comments: data
+                })
+            });
+        });    
+    });
+});
+
+
+app.post('/addcomment', urlcodedParser, (req, res)=>{
+    if(!req.body) return res.statusCode(400);
+    pool.query('INSERT INTO comments (idPost, firstNameUser, lastNameUser, text) VALUES(?,?,?,?)', [req.body.idPost, userInfo.firstName, userInfo.lastName, req.body.commentText], (err, data)=>{
         if(err) return console.log(err);
 
-        res.redirect('/profile');
+        res.redirect('/home')
     })
 });
 
@@ -218,7 +287,7 @@ app.listen(3000, ()=>{
     console.log('Server active! URL: http://localhost:3000/');
 });
 
-function unionData(users, posts){
+function unionDataUser(users, posts){
     let result = [];
     for (let i = 0; i < users.length; i++) {
         for (let j = 0; j < posts.length; j++) {
@@ -232,7 +301,6 @@ function unionData(users, posts){
                     tag: posts[j].tag,
                 }
                 result.push(obj);
-
             }            
         }        
     }

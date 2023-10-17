@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <title>Просмотр поста</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <section class="header header--not-bg">
+
+            <header class="header-container header-container--bg-color">
+
+                <div class="header-content container">
+
+                    <div class="header__logo">Ваш блог</div>
+    
+                    <nav class="menu">
+    
+                        <ul class="menu__list">
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link menu__list__item__link--active" href="#">Главная</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/post">Написать пост</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                            <li class="menu__list__item">
+                                <a class="menu__list__item__link" href="/profile">Профиль</a>
+                                <span class="menu__list__item__line"></span>
+                            </li>
+    
+                        </ul>
+    
+                    </nav>
+
+                </div>
+
+                
+            </header>
+
+            <main class="container">
+                <div class="post--view-post">
+                   <div class="post__main__group post--view-post">
+                        <a href="/home" class="post__main__title">Назад</a>
+                        <h3 class="post__main__title">{{title}}</h3>
+                        <h4 class="post__main__author">Автор: {{firstName}} {{lastName}} <form action="/subscribe" method="post"><button class="btn-subscribe" type="submit">Подписаться</button></form></h4>
+                        <h5 class="post__main__tag">Теги:<span class="tags-post">{{tag}}</span></h5>
+                    </div>
+
+                    <p class="post__main__text">{{text}}</p>
+
+                    <div class="post__main__comments">
+                        <form action="/addcomment" class="comment" method="post">
+                            <label class="comment__title" for="comment-text">Оставить комментарий:</label>
+                            <input type="number" name="idPost" class="display-none" value="{{idPost}}">
+                            <input class="comment__text" type="text" name="commentText" id="comment-text" placeholder="Введите текст">
+                            <button class="btn" type="submit">Отправить</button>
+                        </form>
+                    <h2 class="post__main__comments__title">Комментарии</h2>
+                        <ul class="list-com">
+                            {{#each comments}}
+                                <li class="list-com__item">
+                                    <h5 class="list-com__item__name">{{this.firstNameUser}} {{this.lastNameUser}}</h5>
+                                    <p class="list-com__item__text">{{this.text}}</p>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+
+    <script src="/js/home.js"></script>
+</body>
+</html>

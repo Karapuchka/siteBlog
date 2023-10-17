@@ -51,11 +51,11 @@
                     <div class="post__user">
                         <div class="post__header__item post__item--column">
                             <label class="post__label post__label--little" for="update-lastname">Имя</label>
-                            <input value={{lastName}} id="update-lastname" name="updateLastName" type="text" class="post__user__info">
+                            <input value={{firstName}} id="update-lastname" name="updateFirstName" type="text" class="post__user__info">
                         </div>
                         <div class="post__header__item post__item--column">
                             <label class="post__label post__label--little" for="update-firstName">Фамилия</label>
-                            <input value={{firstName}} id="update-firstName" name="updateFirstName" type="text" class="post__user__info">
+                            <input value={{lastName}} id="update-firstName" name="updateLastName" type="text" class="post__user__info">
                         </div>
                          <div class="post__header__item post__item--column">
                             <label class="post__label post__label--little" for="update-firstName">Логин</label>
@@ -66,7 +66,7 @@
                             <input value={{password}} id="update-password" name="updatePassword"  type="text" class="post__user__info">
                         </div>        
                     </div>
-                    <button type="submit" class="btn btn-post">Изменить</button>
+                    <button type="submit" id="update-user-btn" class="btn btn-post">Изменить</button>
                 </form>
 
                 <div class="post post--margin-left post--item-start post--overflow-scroll">

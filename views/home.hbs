@@ -95,15 +95,9 @@
                     <li class="post__main__list__item" id="post-{{this.id}}" >
                         
                         <div class="post__main__group">
-                            <h3 class="post__main__title">{{this.title}}</h3>
-                            <h4 class="post__main__author">Автор: {{this.lastName}} {{this.firstName}} <form action="/subscribe" method="post"><button class="btn-subscribe" type="submit">Подписаться</button></form></h4>
+                            <form action="/viewPost/{{this.id}}" method="post"><button class="post__main__title" type="submit">{{this.title}}</button></form>
+                            <h4 class="post__main__author">Автор: {{this.lastName}} {{this.firstName}} </h4>
                             <h5 class="post__main__tag">Теги:<span class="tags-post">{{this.tag}}</span></h5>
-                        </div>
-
-                        <p class="post__main__text">{{this.text}}</p>
-
-                        <div class="post__main__comments">
-
                         </div>
                     </li>
                 {{/each}}
